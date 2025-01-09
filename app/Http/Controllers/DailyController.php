@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateDailyRequest;
 use App\Models\Lot;
 use App\Models\StatusLot;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 
 class DailyController extends Controller
@@ -46,7 +47,7 @@ class DailyController extends Controller
             "id_lot" => "required"
         ]);
 
-        $date = Carbon::parse($validated['date_daily']);
+        $date = DateTime::createFromFormat('d/m/Y', $validated['date_daily']);
 
         foreach ($validated['id_lot'] as $value) {
             $daily = Daily::create([

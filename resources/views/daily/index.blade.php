@@ -13,13 +13,13 @@
     <div id="accordion-collapse" data-accordion="collapse">
         @foreach ($dailies as $date => $dailys)
             @php
-                $dateFormat = \Carbon\Carbon::parse($date)->format('m-d-Y');
+                $dateFormat = \Carbon\Carbon::parse($date)->format('d-m-Y');
             @endphp
             <h4 class="text-2xl font-bold dark:text-white mt-10 mb-2">{{ $dateFormat }}</h4>
             @foreach ($dailys as $daily => $value)
                 <h2 id="accordion-collapse-heading-{{ $value->id_daily }}">
                     <button type="button"
-                        class="flex bg-gray-200 items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-gray-200 hover:bg-gray-200 gap-3"
+                        class="flex bg-gray-200 items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-gray-200 hover:bg-gray-200 gap-3"
                         data-accordion-target="#accordion-collapse-body-{{ $value->id_daily }}"
                         aria-controls="accordion-collapse-body-{{ $value->id_daily }}">
                         {{ $value->lot->name_lot }}
@@ -56,11 +56,14 @@
                                 ->where('id_lot', $value->id_lot)
                                 ->get();
                         @endphp
+                        @php
+                            $cases = ['SX', 'CK', 'EP', 'CT', 'ER', 'SY', 'SP'];
+                        @endphp
                         @foreach ($status_lot as $status => $statusValue)
                             @if ($value->lot->{'case' . $status + 1} === 'Iya')
                                 <tr>
                                     <td class="px-6 py-3 text-center border-r border-gray-900">
-                                        Case {{ $status + 1 }}
+                                        Case {{ $cases[$status] }}
                                     </td>
                                     <td class="px-6 py-3 text-center border-r border-gray-900">
                                         {{ $value->lot->{'case' . $status + 1} }}

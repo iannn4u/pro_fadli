@@ -13,10 +13,10 @@
                         </path>
                     </svg>
                 </button>
-                {{-- <p class="flex ms-2 md:me-24">
+                <p class="flex ms-2 md:me-24">
                     <span
-                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Nama Project</span>
-                </p> --}}
+                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">TCF-NS</span>
+                </p>
             </div>
             <div class="flex items-center">
                 <div class="flex items-center ms-3">

@@ -17,11 +17,9 @@
                     <th scope="col" class="px-6 py-3 text-center">
                         Nama Lot
                     </th>
-                    @for ($i = 1; $i < 8; $i++)
-                        <th scope="col" class="px-6 py-3">
-                            Case {{ $i }}
-                        </th>
-                    @endfor
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Cases
+                    </th>
                     <th scope="col" class="px-6 py-3 text-center">
                         Aksi
                     </th>
@@ -46,11 +44,21 @@
                         <td class="px-6 py-4 text-center">
                             {{ $lot->name_lot }}
                         </td>
-                        @for ($i = 1; $i < 8; $i++)
-                            <td class="px-6 py-4 text-center">
-                                {{ $lot->{'case' . $i} }}
-                            </td>
-                        @endfor
+                        @php
+                            $cases = ['SX', 'CK', 'EP', 'CT', 'ER', 'SY', 'SP'];
+                            $result = [];
+                        @endphp
+                        <td class="px-6 py-4 text-center">
+                            @foreach ($cases as $case => $value)
+                                @if ($lot->{'case' . $case + 1} == 'Iya')
+                                    @php
+                                        $result[] = $value;
+                                    @endphp
+                                @endif
+                            @endforeach
+
+                            {{ implode(', ', $result) }}
+                        </td>
                         <td class="px-6 py-4 flex justify-center gap-5">
                             <a href="/lot/{{ $lot->id_lot }}/edit"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
