@@ -2,7 +2,7 @@
 
 @section('main')
     <h3 class="text-3xl font-semibold dark:text-white mb-10">{{ $title }}</h3>
-    <form class="max-w-sm" action="/user/{{ auth()->user()->id_user }}" method="post">
+    <form class="max-w-sm" action="/setting/{{ auth()->user()->id_user }}" method="post">
         @method('put')
         @csrf
         <div class="mb-5">

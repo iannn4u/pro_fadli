@@ -32,7 +32,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/status/{status}/{status_lot}', [StatusLotController::class, 'update']);
 
-    Route::get('/setting/{user}', [UserController::class, 'updateSetting']);
+    Route::get('/setting/{user}', [UserController::class, 'setting']);
+    Route::put('/setting/{user}', [UserController::class, 'updateSetting']);
 
     Route::get('/signout', [AuthController::class, 'signout']);
 });
